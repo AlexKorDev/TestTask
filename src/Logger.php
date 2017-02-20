@@ -32,16 +32,17 @@ abstract class Logger extends AbstractLogger
 	}
 	
 	//from psr-3
-	protected function interpolate($message, array $context = array()) 
+	protected function interpolate($message, array $context = array())
 	{
-     	$replace = array();
-    	foreach ($context as $key => $val) {
-        	$replace['{' . $key . '}'] = $val;
+		$replace = array();
+		foreach ($context as $key => $val) {
+			$replace['{' . $key . '}'] = $val;
       	}
       	return strtr($message, $replace);
     }
 
-    protected function transformMessage(&$message, &$context){
+    protected function transformMessage(&$message, &$context)
+    {
     	if (is_string($message) && !empty($context)) {
 			$message = $this->interpolate($message, $context);
 			//$context=array();
@@ -57,14 +58,14 @@ abstract class Logger extends AbstractLogger
 		}
     }
 
-    protected function getDate($format = 'Y-m-d H:i:s') 
+    protected function getDate($format = 'Y-m-d H:i:s')
     {
     	return (new \DateTime())->format($format);
     }
 
     protected function contextToString(array $context = array())
-	{
-		return !empty($context) ? json_encode($context) : "";
+    {
+    	return !empty($context) ? json_encode($context) : "";
 	}
 
 	private function __construct() {}
