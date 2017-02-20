@@ -21,7 +21,7 @@ class DBLogger extends Logger\Logger
 		$this->connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
  		$query = "create table if not exists {$this->table}(id int unsigned not null auto_increment, date datetime, level varchar(16), message text, context text, primary key(id))";
  		try{
-		$this->connection->query($query);
+			$this->connection->query($query);
 		} catch (\PDOException $e) {
 			print_r($e->getMessage());
 		}

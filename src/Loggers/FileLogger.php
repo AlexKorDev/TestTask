@@ -14,7 +14,7 @@ class FileLogger extends Logger\Logger
 		if (!empty($parameters)) {
 			$this->setParameters($parameters);
 		} else {
-		$this->path = Logger\Config\Config::$components['filecomponents']['path'];
+			$this->path = Logger\Config\Config::$components['filecomponents']['path'];
 		}	
 		$this->openFile = fopen($this->path, "a+");
 	}

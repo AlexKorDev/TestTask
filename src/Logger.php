@@ -34,11 +34,11 @@ abstract class Logger extends AbstractLogger
 	//from psr-3
 	protected function interpolate($message, array $context = array()) 
 	{
-      $replace = array();
-      foreach ($context as $key => $val) {
-          $replace['{' . $key . '}'] = $val;
-      }
-      return strtr($message, $replace);
+     	$replace = array();
+    	foreach ($context as $key => $val) {
+        	$replace['{' . $key . '}'] = $val;
+      	}
+      	return strtr($message, $replace);
     }
 
     protected function transformMessage(&$message, &$context){
@@ -67,7 +67,7 @@ abstract class Logger extends AbstractLogger
 		return !empty($context) ? json_encode($context) : "";
 	}
 
-    private function __construct() {}
+	private function __construct() {}
 	private function __clone() {}
 	private function __wakeup() {}
 }
