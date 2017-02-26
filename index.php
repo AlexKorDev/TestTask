@@ -9,8 +9,12 @@ $loader = require('vendor/autoload.php');
 	));
 
 */
-$logger = Logger\Logger::create("File");
-//$logger = Logger\Logger::create("Stream");
-//$logger = Logger\Logger::create("DB");
-$logger->info('textInfo {placeholder}',array('placeholder' => 'TextPlace'));
-$logger->warning("warningText");
+$loggerFile = Logger\Logger::create("File");
+$loggerFile->info('textInfo {placeholder}',array('placeholder' => 'TextPlace'));
+$loggerFile->warning("warningText");
+
+$loggerFile2 = Logger\Logger::create("File", array('path'=>'log2.txt'));
+$loggerFile2->alert("AlertText");
+
+$loggerDB=Logger\Logger::create("DB");
+$loggerDB->error("ErrorText");

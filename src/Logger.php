@@ -8,17 +8,10 @@ use Psr\Log\LogLevel;
 
 abstract class Logger extends AbstractLogger 
 {
-	private static $logger = null; 
-
 	public static function create($type, array $parameters = array()) 
 	{
-		if (empty(self::$logger)) {
-			$className = 'Logger\\Loggers\\'.$type.'Logger';
-			self::$logger = new $className($parameters);
-			return self::$logger;
-		} else {
-			return self::$logger;
-		}
+		$className = 'Logger\\Loggers\\'.$type.'Logger';
+		return new $className($parameters);
 	}
 
 	protected function setParameters(array $parameters = array())
@@ -67,8 +60,4 @@ abstract class Logger extends AbstractLogger
     {
     	return !empty($context) ? json_encode($context) : "";
 	}
-
-	private function __construct() {}
-	private function __clone() {}
-	private function __wakeup() {}
 }

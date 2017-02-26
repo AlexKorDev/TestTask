@@ -8,11 +8,7 @@ class Connection
 	{
 		$config = \Logger\Config\Config::$components['dbcomponents'];
 		$dsn = "mysql:host={$config['host']};dbname={$config['dbname']}";
-		try {
-			$db = new \PDO($dsn, $config['user'], $config['password']);
-		} catch (\PDOException $e) {
-			die($e->getMessage());
-		}
+		$db = new \PDO($dsn, $config['user'], $config['password']);
 		return $db;
 	} 
 }
