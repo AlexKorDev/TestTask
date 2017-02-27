@@ -2,19 +2,14 @@
 
 $loader = require('vendor/autoload.php');
 
-//$logger = Logger\Logger::create("File", array('path' => 'log.txt'));
-/*$logger = Logger\Logger::create("DB", array(
-	'connection' => Logger\Connection\Connection::getConnection(),
-	'table' => 'log'
-	));
+$writerFile = new Logger\Writers\FileWriter();
+$writerFile2 = new Logger\Writers\FileWriter(['path'=>'log2.txt']);
+$writerDB = new Logger\Writers\DBWriter();
 
-*/
-$loggerFile = Logger\Logger::create("File");
-$loggerFile->info('textInfo {placeholder}',array('placeholder' => 'TextPlace'));
-$loggerFile->warning("warningText");
+$logger = new Logger\Logger();
+$logger->addWriter($writerFile);
+$logger->addWriter($writerDB);
+$logger->addWriter($writerFile2);
 
-$loggerFile2 = Logger\Logger::create("File", array('path'=>'log2.txt'));
-$loggerFile2->alert("AlertText");
-
-$loggerDB=Logger\Logger::create("DB");
-$loggerDB->error("ErrorText");
+$logger->info("TextInfo");
+$logger->alert("TextAlert");

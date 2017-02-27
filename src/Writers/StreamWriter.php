@@ -1,9 +1,9 @@
 <?php
-namespace Logger\Loggers;
+namespace Logger\Writers;
 
 use Logger;
 
-class StreamLogger extends FileLogger
+class StreamWriter extends FileWriter
 {
 	public function __construct()
 	{

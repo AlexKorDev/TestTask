@@ -1,10 +1,10 @@
 <?php 
 
-namespace Logger\Loggers;
+namespace Logger\Writers;
 
 use Logger;
 
-class DBLogger extends Logger\Logger 
+class DBWriter extends Logger\Writer 
 {
 	protected $connection;
 	protected $table;

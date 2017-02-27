@@ -1,10 +1,10 @@
 <?php
 
-namespace Logger\Loggers;
+namespace Logger\Writers;
 
 use Logger;
 
-class FileLogger extends Logger\Logger
+class FileWriter extends Logger\Writer
 {
 	protected $path;
 	protected $openFile;
